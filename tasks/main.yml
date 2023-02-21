@@ -1,0 +1,26 @@
+# Copyright (c) 2023, Bennett Samowich <bennett@foolean.org>
+# All rights reserved
+# SPDX short identifier: BSD-3-Clause
+---
+
+- name: Role foolean/system
+  block:
+
+  - name: CIS | Ensure permissions on system files are configured
+    ansible.builtin.file:
+      name: "{{ item.name }}"
+      owner: 'root'
+      group: 'root'
+      mode: "{{ item.mode }}"
+    with_items:
+      - {name: '/etc/passwd', mode: '0644'}
+      - {name: '/etc/shadow', mode: '0000'}
+      - {name: '/etc/group', mode: '0644'}
+      - {name: '/etc/gshadow', mode: '0000'}
+      - {name: '/etc/group-', mode: '0644'}
+      - {name: '/etc/passwd-', mode: '0644'}
+      - {name: '/etc/shadow-', mode: '0000'}
+      - {name: '/etc/gshadow-', mode: '0000'}
+
+  tags:
+    - 'role_foolean_system'
