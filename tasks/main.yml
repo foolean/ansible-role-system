@@ -25,6 +25,10 @@
         - {name: '/etc/shadow-', mode: '0000'}
         - {name: '/etc/gshadow-', mode: '0000'}
 
+    - name: Set the hostname
+      ansible.builtin.hostname:
+        name: "{{ inventory_hostname_short }}"
+
   # Tags to be applied to this role (block)
   tags:
     - 'role_foolean_system'
