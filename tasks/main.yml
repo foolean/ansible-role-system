@@ -10,6 +10,7 @@
   block:
 
     - name: CIS | Ensure permissions on system files are configured
+      become: true
       ansible.builtin.file:
         name: "{{ item.name }}"
         owner: 'root'
@@ -26,6 +27,7 @@
         - {name: '/etc/gshadow-', mode: '0000'}
 
     - name: Set the hostname
+      become: true
       ansible.builtin.hostname:
         name: "{{ inventory_hostname_short }}"
 
