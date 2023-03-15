@@ -6,7 +6,7 @@
 # We put the entire role in a block so we can create
 # a role specific tag, which saves the caller from
 # having to do so in their playbook.
-- name: Role foolean/
+- name: Role foolean/system
   block:
 
     - name: CIS | Ensure permissions on system files are configured
